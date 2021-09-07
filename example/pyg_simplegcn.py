@@ -61,4 +61,4 @@ tracer.run('main()')
 
 # make a report, placing output in the current directory
 r = tracer.results()
-r.write_results(show_missing=True, coverdir="./trace")
+r.write_results(show_missing=True, coverdir="./trace_pyg")
