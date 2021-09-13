@@ -1,0 +1,357 @@
+Using backend: pytorch
+  NumNodes: 2708
+  NumEdges: 10556
+  NumFeats: 1433
+  NumClasses: 7
+  NumTrainingSamples: 140
+  NumValidationSamples: 500
+  NumTestSamples: 1000
+Done loading data from cached files.
+Accuracy: 0.7680
+Accuracy: 0.7560
+DGL computational time : 4.093804597854614
+PyG computational time : 4.043072700500488
+DGL profiling result
+         242234 function calls (241931 primitive calls) in 4.094 seconds
+
+   Ordered by: internal time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+      100    0.872    0.009    0.872    0.009 {method 'run_backward' of 'torch._C._EngineBase' objects}
+      300    0.356    0.001    2.060    0.007 graphconv.py:337(forward)
+      600    0.209    0.000    0.209    0.000 {method 'item' of 'torch._C._TensorBase' objects}
+        1    0.186    0.186    4.094    4.094 pyg_dgl.py:89(dgl_train)
+     1200    0.181    0.000    0.181    0.000 {method 'add_' of 'torch._C._TensorBase' objects}
+     1200    0.180    0.000    0.180    0.000 {method 'mul_' of 'torch._C._TensorBase' objects}
+      900    0.143    0.000    0.143    0.000 {built-in method arange}
+      100    0.114    0.001    0.743    0.007 _functional.py:53(adam)
+      600    0.101    0.000    0.147    0.000 heterograph_index.py:560(in_degrees)
+      600    0.100    0.000    0.100    0.000 {built-in method pow}
+      600    0.098    0.000    0.098    0.000 {method 'clamp' of 'torch._C._TensorBase' objects}
+      600    0.096    0.000    0.096    0.000 {method 'float' of 'torch._C._TensorBase' objects}
+      300    0.091    0.000    0.091    0.000 {built-in method sum}
+      600    0.091    0.000    0.091    0.000 {method 'addcdiv_' of 'torch._C._TensorBase' objects}
+      600    0.088    0.000    0.088    0.000 {method 'addcmul_' of 'torch._C._TensorBase' objects}
+      600    0.088    0.000    0.088    0.000 {method 'sqrt' of 'torch._C._TensorBase' objects}
+      594    0.082    0.000    0.082    0.000 {method 'zero_' of 'torch._C._TensorBase' objects}
+      300    0.076    0.000    0.076    0.000 {built-in method matmul}
+     7200    0.063    0.000    0.066    0.000 ndarray.py:177(<genexpr>)
+      300    0.060    0.000    0.124    0.000 sparse.py:77(_gspmm)
+      500    0.054    0.000    0.054    0.000 {built-in method zeros}
+      300    0.053    0.000    0.053    0.000 {built-in method min}
+      300    0.050    0.000    0.050    0.000 {method 'any' of 'torch._C._TensorBase' objects}
+      300    0.049    0.000    0.049    0.000 {method 'type' of 'torch._C._TensorBase' objects}
+      300    0.048    0.000    0.127    0.000 heterograph_index.py:580(out_degrees)
+      300    0.046    0.000    0.067    0.000 heterograph_index.py:315(has_nodes)
+      200    0.036    0.000    0.036    0.000 {built-in method relu}
+     1200    0.026    0.000    0.031    0.000 {built-in method torch._C._from_dlpack}
+     2700    0.023    0.000    0.023    0.000 heterograph_index.py:160(dtype)
+     3000    0.022    0.000    0.022    0.000 tensor.py:94(to_backend_ctx)
+      100    0.018    0.000    0.018    0.000 {built-in method torch._C._nn.nll_loss}
+      100    0.017    0.000    0.017    0.000 {method 'log_softmax' of 'torch._C._TensorBase' objects}
+     3600    0.016    0.000    0.093    0.000 ndarray.py:174(shape)
+      100    0.016    0.000    0.016    0.000 {built-in method ones_like}
+     7200    0.013    0.000    0.013    0.000 __init__.py:506(cast)
+      300    0.011    0.000    0.709    0.002 heterograph.py:3510(out_degrees)
+  400/100    0.009    0.000    2.131    0.021 module.py:866(_call_impl)
+      600    0.008    0.000    0.008    0.000 {built-in method reshape}
+      300    0.008    0.000    0.140    0.000 {built-in method apply}
+     3300    0.008    0.000    0.012    0.000 heterograph_index.py:62(metagraph)
+     1500    0.008    0.000    0.050    0.000 checks.py:9(prepare_tensor)
+     3000    0.008    0.000    0.013    0.000 heterograph_index.py:171(ctx)
+     1200    0.007    0.000    0.134    0.000 tensor.py:339(zerocopy_from_dgl_ndarray)
+      600    0.007    0.000    0.314    0.001 heterograph.py:3426(in_degrees)
+      600    0.007    0.000    0.037    0.000 heterograph.py:4083(_set_n_repr)
+     4182    0.005    0.000    0.006    0.000 tensor.py:906(grad)
+      100    0.005    0.000    0.100    0.001 optimizer.py:189(zero_grad)
+      900    0.005    0.000    0.175    0.000 view.py:40(__call__)
+      300    0.005    0.000    0.288    0.001 heterograph.py:2682(has_nodes)
+     3000    0.005    0.000    0.005    0.000 runtime_ctypes.py:140(__new__)
+    14008    0.005    0.000    0.010    0.000 {built-in method builtins.isinstance}
+    11600    0.005    0.000    0.010    0.000 {built-in method builtins.len}
+      200    0.005    0.000    0.005    0.000 {built-in method torch._ops.profiler._record_function_enter}
+     3600    0.005    0.000    0.005    0.000 {built-in method builtins.getattr}
+     2400    0.004    0.000    0.027    0.000 heterograph.py:2631(idtype)
+     1800    0.004    0.000    0.004    0.000 heterograph_index.py:285(number_of_nodes)
+     2400    0.004    0.000    0.004    0.000 {built-in method _abc._abc_instancecheck}
+     3000    0.004    0.000    0.039    0.000 heterograph.py:5318(device)
+     2700    0.004    0.000    0.018    0.000 heterograph_index.py:77(number_of_etypes)
+      300    0.004    0.000    0.130    0.000 sparse.py:120(forward)
+      100    0.004    0.000    2.128    0.021 pyg_dgl.py:46(forward)
+      100    0.004    0.000    0.751    0.008 adam.py:55(step)
+     1800    0.004    0.000    0.012    0.000 tensor.py:333(zerocopy_to_dgl_ndarray)
+      600    0.003    0.000    0.017    0.000 heterograph.py:5546(local_scope)
+      200    0.003    0.000    0.003    0.000 {built-in method torch._ops.profiler._record_function_exit}
+      600    0.003    0.000    0.004    0.000 frame.py:35(infer_scheme)
+     2700    0.003    0.000    0.003    0.000 graph_index.py:168(number_of_edges)
+     1800    0.003    0.000    0.003    0.000 {built-in method torch._C._to_dlpack}
+     3600    0.003    0.000    0.003    0.000 tensor.py:72(shape)
+     1800    0.003    0.000    0.016    0.000 heterograph.py:1241(get_etype_id)
+     1200    0.003    0.000    0.004    0.000 heterograph.py:1094(to_canonical_etype)
+      300    0.003    0.000    0.196    0.001 heterograph.py:4753(update_all)
+     1200    0.003    0.000    0.003    0.000 module.py:934(__getattr__)
+      300    0.003    0.000    0.003    0.000 heterograph.py:86(_init)
+     1800    0.003    0.000    0.003    0.000 {dgl._ffi._cy3.core._from_dlpack}
+     3300    0.003    0.000    0.004    0.000 graph_index.py:36(__new__)
+      600    0.003    0.000    0.003    0.000 graph_index.py:327(find_edge)
+      600    0.002    0.000    0.011    0.000 frame.py:466(update_column)
+      600    0.002    0.000    0.006    0.000 heterograph.py:1849(srcdata)
+      300    0.002    0.000    0.003    0.000 heterograph_index.py:81(get_relation_graph)
+     2400    0.002    0.000    0.002    0.000 tensor.py:75(dtype)
+      100    0.002    0.000    0.765    0.008 optimizer.py:84(wrapper)
+      300    0.002    0.000    0.013    0.000 heterograph.py:2138(__getitem__)
+      300    0.002    0.000    0.153    0.001 core.py:248(invoke_gspmm)
+     2400    0.002    0.000    0.002    0.000 tensor.py:81(context)
+      600    0.002    0.000    0.003    0.000 tensor.py:568(__len__)
+     1200    0.002    0.000    0.002    0.000 {built-in method builtins.min}
+      600    0.002    0.000    0.011    0.000 frame.py:300(__init__)
+      300    0.002    0.000    0.157    0.001 core.py:300(message_passing)
+      600    0.002    0.000    0.016    0.000 _collections_abc.py:824(update)
+       12    0.002    0.000    0.002    0.000 {built-in method zeros_like}
+     2100    0.002    0.000    0.006    0.000 frame.py:92(__init__)
+      300    0.002    0.000    0.055    0.000 tensor.py:148(min)
+     2100    0.002    0.000    0.010    0.000 frame.py:265(create)
+      300    0.002    0.000    0.005    0.000 contextlib.py:117(__exit__)
+      900    0.002    0.000    0.145    0.000 tensor.py:313(arange)
+     1800    0.002    0.000    0.002    0.000 {method 'contiguous' of 'torch._C._TensorBase' objects}
+     4600    0.002    0.000    0.002    0.000 {method 'dim' of 'torch._C._TensorBase' objects}
+      600    0.002    0.000    0.210    0.000 tensor.py:48(as_scalar)
+     1200    0.002    0.000    0.135    0.000 __init__.py:121(from_dgl_nd)
+     2100    0.002    0.000    0.003    0.000 frame.py:98(__len__)
+      300    0.002    0.000    0.002    0.000 contextlib.py:82(__init__)
+     1302    0.002    0.000    0.002    0.000 {method 'format' of 'str' objects}
+     4200    0.002    0.000    0.002    0.000 {built-in method __new__ of type object at 0x907780}
+      400    0.002    0.000    0.002    0.000 {built-in method torch._C._get_tracing_state}
+     1500    0.002    0.000    0.002    0.000 frame.py:225(clone)
+      600    0.002    0.000    0.005    0.000 frame.py:308(<dictcomp>)
+     1500    0.001    0.000    0.002    0.000 tensor.py:69(is_tensor)
+     3300    0.001    0.000    0.002    0.000 tensor.py:78(ndim)
+      100    0.001    0.000    0.017    0.000 __init__.py:28(_make_grads)
+     2700    0.001    0.000    0.002    0.000 base.py:25(is_all)
+     1200    0.001    0.000    0.002    0.000 __init__.py:107(is_initialized)
+      594    0.001    0.000    0.001    0.000 {method 'requires_grad_' of 'torch._C._TensorBase' objects}
+      300    0.001    0.000    0.022    0.000 view.py:68(__setitem__)
+     1200    0.001    0.000    0.001    0.000 view.py:51(__init__)
+      600    0.001    0.000    0.003    0.000 heterograph.py:1915(dstdata)
+     1200    0.001    0.000    0.003    0.000 __init__.py:144(_lazy_init)
+     2400    0.001    0.000    0.006    0.000 abc.py:96(__instancecheck__)
+      100    0.001    0.000    0.020    0.000 functional.py:2312(nll_loss)
+      100    0.001    0.000    0.755    0.008 grad_mode.py:24(decorate_context)
+      100    0.001    0.000    0.891    0.009 tensor.py:195(backward)
+     1200    0.001    0.000    0.010    0.000 __init__.py:118(to_dgl_nd)
+      200    0.001    0.000    0.006    0.000 profiler.py:615(__enter__)
+     1200    0.001    0.000    0.004    0.000 __init__.py:131(init)
+      100    0.001    0.000    0.890    0.009 __init__.py:68(backward)
+      300    0.001    0.000    0.131    0.000 autocast_mode.py:204(decorate_fwd)
+      300    0.001    0.000    0.005    0.000 heterograph.py:40(__init__)
+      600    0.001    0.000    0.012    0.000 frame.py:566(clone)
+     1200    0.001    0.000    0.002    0.000 heterograph.py:955(srctypes)
+     4512    0.001    0.000    0.001    0.000 {method 'get' of 'dict' objects}
+      300    0.001    0.000    0.142    0.000 spmm.py:35(gspmm)
+      200    0.001    0.000    0.004    0.000 profiler.py:619(__exit__)
+     2400    0.001    0.000    0.001    0.000 {method 'items' of 'dict' objects}
+      600    0.001    0.000    0.003    0.000 view.py:57(__getitem__)
+     5788    0.001    0.000    0.001    0.000 {built-in method torch._C._has_torch_function_unary}
+      300    0.001    0.000    0.092    0.000 tensor.py:123(sum)
+      300    0.001    0.000    0.012    0.000 heterograph.py:5612(<listcomp>)
+      300    0.001    0.000    0.001    0.000 message.py:102(copy_u)
+     1800    0.001    0.000    0.004    0.000 ndarray.py:153(from_dlpack)
+     1200    0.001    0.000    0.001    0.000 heterograph.py:1191(get_ntype_id_from_src)
+      600    0.001    0.000    0.001    0.000 heterograph.py:1720(dstnodes)
+     1200    0.001    0.000    0.001    0.000 {method 'to_dlpack' of 'dgl._ffi._cy3.core.NDArrayBase' objects}
+     1200    0.001    0.000    0.001    0.000 {built-in method torch._C._cuda_isInBadFork}
+      600    0.001    0.000    0.002    0.000 message.py:97(name)
+      900    0.001    0.000    0.002    0.000 sparse.py:62(to_dgl_nd_for_write)
+      300    0.001    0.000    0.002    0.000 view.py:164(__init__)
+      300    0.001    0.000    0.001    0.000 heterograph.py:1157(get_ntype_id)
+     1500    0.001    0.000    0.001    0.000 heterograph.py:1216(get_ntype_id_from_dst)
+      300    0.001    0.000    0.001    0.000 heterograph_index.py:300(number_of_edges)
+      300    0.001    0.000    0.001    0.000 internal.py:553(expand_as_pair)
+      300    0.001    0.000    0.003    0.000 contextlib.py:238(helper)
+      300    0.001    0.000    0.140    0.000 sparse.py:487(gspmm)
+      300    0.001    0.000    0.001    0.000 heterograph.py:2130(_find_etypes)
+      600    0.001    0.000    0.017    0.000 {built-in method builtins.next}
+      200    0.001    0.000    0.004    0.000 profiler.py:607(__init__)
+      100    0.001    0.000    0.001    0.000 grad_mode.py:114(__init__)
+     1200    0.001    0.000    0.001    0.000 heterograph.py:1006(dsttypes)
+     4282    0.001    0.000    0.001    0.000 {built-in method builtins.hasattr}
+      200    0.001    0.000    0.001    0.000 grad_mode.py:200(__init__)
+      600    0.001    0.000    0.001    0.000 heterograph.py:4122(_get_n_repr)
+     3000    0.001    0.000    0.001    0.000 runtime_ctypes.py:152(__init__)
+     2700    0.001    0.000    0.001    0.000 heterograph.py:825(is_unibipartite)
+      200    0.001    0.000    0.037    0.000 functional.py:1195(relu)
+      300    0.001    0.000    0.052    0.000 tensor.py:219(zeros)
+      600    0.001    0.000    0.011    0.000 frame.py:395(__setitem__)
+      300    0.001    0.000    0.001    0.000 heterograph.py:2131(<listcomp>)
+      300    0.001    0.000    0.003    0.000 heterograph.py:2070(edata)
+     1600    0.001    0.000    0.001    0.000 {method 'values' of 'collections.OrderedDict' objects}
+      900    0.001    0.000    0.001    0.000 view.py:17(__init__)
+      600    0.001    0.000    0.001    0.000 frame.py:380(__getitem__)
+      100    0.001    0.000    0.001    0.000 grad_mode.py:123(__exit__)
+      300    0.001    0.000    0.049    0.000 tensor.py:103(astype)
+      300    0.001    0.000    0.001    0.000 function.py:14(save_for_backward)
+      300    0.001    0.000    0.001    0.000 message.py:78(__init__)
+      300    0.000    0.000    0.001    0.000 heterograph.py:1653(srcnodes)
+      300    0.000    0.000    0.001    0.000 reducer.py:78(func)
+     3200    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+      600    0.000    0.000    0.001    0.000 <string>:1(__new__)
+      300    0.000    0.000    0.142    0.000 spmm.py:189(func)
+     1800    0.000    0.000    0.000    0.000 heterograph.py:874(etypes)
+      600    0.000    0.000    0.000    0.000 {built-in method math.sqrt}
+      600    0.000    0.000    0.003    0.000 sparse.py:57(to_dgl_nd)
+      300    0.000    0.000    0.000    0.000 sparse.py:91(spmm_cache_Y)
+      200    0.000    0.000    0.000    0.000 {method 'size' of 'torch._C._TensorBase' objects}
+      300    0.000    0.000    0.000    0.000 {built-in method torch._C.is_autocast_enabled}
+      300    0.000    0.000    0.000    0.000 reducer.py:31(__init__)
+      600    0.000    0.000    0.000    0.000 frame.py:371(num_rows)
+      300    0.000    0.000    0.002    0.000 message.py:251(copy_src)
+      600    0.000    0.000    0.000    0.000 core.py:12(is_builtin)
+     2400    0.000    0.000    0.000    0.000 heterograph.py:843(ntypes)
+      300    0.000    0.000    0.015    0.000 contextlib.py:108(__enter__)
+      100    0.000    0.000    0.001    0.000 grad_mode.py:119(__enter__)
+      606    0.000    0.000    0.000    0.000 tensor.py:593(__hash__)
+      600    0.000    0.000    0.000    0.000 frame.py:110(data)
+      100    0.000    0.000    0.017    0.000 functional.py:1651(log_softmax)
+      300    0.000    0.000    0.000    0.000 heterograph.py:118(<dictcomp>)
+      300    0.000    0.000    0.000    0.000 heterograph_index.py:23(__new__)
+        2    0.000    0.000    0.000    0.000 _ops.py:56(__getattr__)
+      300    0.000    0.000    0.000    0.000 sparse.py:10(infer_broadcast_shape)
+      300    0.000    0.000    0.000    0.000 {built-in method torch._C.is_grad_enabled}
+      300    0.000    0.000    0.001    0.000 heterograph.py:5613(<listcomp>)
+        2    0.000    0.000    0.000    0.000 {built-in method torch._C._jit_get_operation}
+      300    0.000    0.000    0.000    0.000 heterograph.py:139(<dictcomp>)
+      600    0.000    0.000    0.000    0.000 heterograph.py:915(canonical_etypes)
+      100    0.000    0.000    0.000    0.000 _reduction.py:7(get_enum)
+      600    0.000    0.000    0.000    0.000 reducer.py:47(name)
+      300    0.000    0.000    0.000    0.000 sparse.py:80(spmm_cache_X)
+      300    0.000    0.000    0.001    0.000 tensor.py:336(zerocopy_to_dgl_ndarray_for_write)
+      300    0.000    0.000    0.000    0.000 sparse.py:65(_need_reduce_last_dim)
+      300    0.000    0.000    0.000    0.000 sparse.py:103(spmm_cache_argX)
+      300    0.000    0.000    0.000    0.000 heterograph.py:144(<listcomp>)
+      608    0.000    0.000    0.000    0.000 {built-in method builtins.id}
+      200    0.000    0.000    0.000    0.000 {built-in method torch._C._set_grad_enabled}
+      300    0.000    0.000    0.000    0.000 heterograph.py:151(<listcomp>)
+      100    0.000    0.000    0.000    0.000 __init__.py:60(_tensor_or_tensors_to_tuple)
+      100    0.000    0.000    0.000    0.000 {method 'numel' of 'torch._C._TensorBase' objects}
+      100    0.000    0.000    0.000    0.000 {built-in method torch._C._has_torch_function_variadic}
+      100    0.000    0.000    0.000    0.000 _jit_internal.py:833(is_scripting)
+      300    0.000    0.000    0.000    0.000 sparse.py:111(spmm_cache_argY)
+        4    0.000    0.000    0.000    0.000 module.py:950(__setattr__)
+        7    0.000    0.000    0.000    0.000 module.py:1347(named_children)
+      4/1    0.000    0.000    0.000    0.000 module.py:1432(train)
+        2    0.000    0.000    0.000    0.000 _builtins.py:141(_register_builtin)
+        1    0.000    0.000    0.000    0.000 {built-in method _abc._abc_subclasscheck}
+        1    0.000    0.000    0.000    0.000 _ops.py:52(__init__)
+        7    0.000    0.000    0.000    0.000 module.py:1338(children)
+        1    0.000    0.000    0.000    0.000 _ops.py:75(__getattr__)
+        1    0.000    0.000    0.000    0.000 abc.py:100(__subclasscheck__)
+        3    0.000    0.000    0.000    0.000 {built-in method builtins.setattr}
+        2    0.000    0.000    0.000    0.000 _builtins.py:110(_get_builtin_table)
+        4    0.000    0.000    0.000    0.000 {method 'items' of 'collections.OrderedDict' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        3    0.000    0.000    0.000    0.000 {method 'add' of 'set' objects}
+
+
+PyG profiling result
+         57315 function calls (57012 primitive calls) in 4.043 seconds
+
+   Ordered by: internal time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+      300    1.006    0.003    1.254    0.004 loop.py:97(add_remaining_self_loops)
+      100    0.789    0.008    0.789    0.008 {method 'run_backward' of 'torch._C._EngineBase' objects}
+      300    0.249    0.001    1.744    0.006 gcn_conv.py:30(gcn_norm)
+     1200    0.181    0.000    0.181    0.000 {method 'mul_' of 'torch._C._TensorBase' objects}
+        1    0.178    0.178    4.043    4.043 pyg_dgl.py:100(pyg_train)
+     1200    0.171    0.000    0.171    0.000 {method 'add_' of 'torch._C._TensorBase' objects}
+      300    0.133    0.000    2.123    0.007 gcn_conv.py:152(forward)
+      100    0.110    0.001    0.725    0.007 _functional.py:53(adam)
+      600    0.100    0.000    0.100    0.000 {built-in method cat}
+      600    0.094    0.000    0.094    0.000 {method 'scatter_add_' of 'torch._C._TensorBase' objects}
+      800    0.093    0.000    0.093    0.000 {built-in method zeros}
+      600    0.088    0.000    0.088    0.000 {method 'addcmul_' of 'torch._C._TensorBase' objects}
+      600    0.088    0.000    0.088    0.000 {method 'sqrt' of 'torch._C._TensorBase' objects}
+      600    0.087    0.000    0.087    0.000 {method 'addcdiv_' of 'torch._C._TensorBase' objects}
+      594    0.083    0.000    0.083    0.000 {method 'zero_' of 'torch._C._TensorBase' objects}
+      300    0.052    0.000    0.055    0.000 gcn_conv.py:190(message)
+      300    0.052    0.000    0.052    0.000 {method 'repeat' of 'torch._C._TensorBase' objects}
+      300    0.050    0.000    0.050    0.000 {method 'index_select' of 'torch._C._TensorBase' objects}
+      300    0.048    0.000    0.048    0.000 {built-in method ones}
+      300    0.048    0.000    0.048    0.000 {method 'pow_' of 'torch._C._TensorBase' objects}
+      300    0.047    0.000    0.047    0.000 {built-in method arange}
+      300    0.046    0.000    0.046    0.000 {method 'masked_fill_' of 'torch._C._TensorBase' objects}
+      300    0.046    0.000    0.046    0.000 {built-in method full}
+      200    0.032    0.000    0.032    0.000 {built-in method relu}
+      100    0.017    0.000    0.017    0.000 {built-in method torch._C._nn.nll_loss}
+      100    0.017    0.000    0.017    0.000 {method 'log_softmax' of 'torch._C._TensorBase' objects}
+      100    0.016    0.000    0.016    0.000 {built-in method ones_like}
+      300    0.011    0.000    0.065    0.000 message_passing.py:138(__collect__)
+  400/100    0.009    0.000    2.189    0.022 module.py:866(_call_impl)
+      300    0.007    0.000    0.243    0.001 message_passing.py:186(propagate)
+      600    0.006    0.000    0.006    0.000 {method 'unsqueeze' of 'torch._C._TensorBase' objects}
+      600    0.006    0.000    0.202    0.000 scatter.py:8(scatter_sum)
+     4182    0.006    0.000    0.007    0.000 tensor.py:906(grad)
+      900    0.005    0.000    0.006    0.000 inspector.py:52(distribute)
+      100    0.005    0.000    0.099    0.001 optimizer.py:189(zero_grad)
+      600    0.004    0.000    0.004    0.000 {method 'expand_as' of 'torch._C._TensorBase' objects}
+      600    0.004    0.000    0.011    0.000 utils.py:4(broadcast)
+      300    0.004    0.000    0.053    0.000 message_passing.py:124(__lift__)
+      200    0.004    0.000    0.004    0.000 {built-in method torch._ops.profiler._record_function_enter}
+      100    0.004    0.000    2.186    0.022 pyg_dgl.py:59(forward)
+      100    0.003    0.000    0.733    0.007 adam.py:55(step)
+      200    0.003    0.000    0.003    0.000 {built-in method torch._ops.profiler._record_function_exit}
+     2000    0.003    0.000    0.003    0.000 {method 'size' of 'torch._C._TensorBase' objects}
+      100    0.003    0.000    0.748    0.007 optimizer.py:84(wrapper)
+     1200    0.003    0.000    0.003    0.000 module.py:934(__getattr__)
+      300    0.002    0.000    0.002    0.000 {method 'view' of 'torch._C._TensorBase' objects}
+      100    0.002    0.000    0.810    0.008 tensor.py:195(backward)
+       12    0.002    0.000    0.002    0.000 {built-in method zeros_like}
+      300    0.002    0.000    0.003    0.000 message_passing.py:86(__check_input__)
+      300    0.002    0.000    0.107    0.000 scatter.py:76(scatter)
+      400    0.001    0.000    0.001    0.000 {built-in method torch._C._get_tracing_state}
+      100    0.001    0.000    0.017    0.000 __init__.py:28(_make_grads)
+      100    0.001    0.000    0.808    0.008 __init__.py:68(backward)
+      300    0.001    0.000    0.098    0.000 scatter.py:26(scatter_add)
+      594    0.001    0.000    0.001    0.000 {method 'requires_grad_' of 'torch._C._TensorBase' objects}
+      100    0.001    0.000    0.019    0.000 functional.py:2312(nll_loss)
+      200    0.001    0.000    0.004    0.000 profiler.py:619(__exit__)
+     2908    0.001    0.000    0.001    0.000 {built-in method builtins.isinstance}
+      100    0.001    0.000    0.737    0.007 grad_mode.py:24(decorate_context)
+     2500    0.001    0.000    0.001    0.000 {method 'dim' of 'torch._C._TensorBase' objects}
+      300    0.001    0.000    0.107    0.000 message_passing.py:270(aggregate)
+      200    0.001    0.000    0.005    0.000 profiler.py:615(__enter__)
+     5188    0.001    0.000    0.001    0.000 {built-in method torch._C._has_torch_function_unary}
+     2300    0.001    0.000    0.001    0.000 {built-in method builtins.len}
+      100    0.001    0.000    0.001    0.000 grad_mode.py:114(__init__)
+     4282    0.001    0.000    0.001    0.000 {built-in method builtins.hasattr}
+      904    0.001    0.000    0.001    0.000 {method 'items' of 'collections.OrderedDict' objects}
+      200    0.001    0.000    0.033    0.000 functional.py:1195(relu)
+      200    0.001    0.000    0.001    0.000 grad_mode.py:200(__init__)
+     1600    0.001    0.000    0.001    0.000 {method 'values' of 'collections.OrderedDict' objects}
+      200    0.001    0.000    0.005    0.000 profiler.py:607(__init__)
+      100    0.001    0.000    0.001    0.000 grad_mode.py:123(__exit__)
+      400    0.000    0.000    0.000    0.000 {method 'numel' of 'torch._C._TensorBase' objects}
+      300    0.000    0.000    0.001    0.000 message_passing.py:115(__set_size__)
+      600    0.000    0.000    0.000    0.000 {built-in method math.sqrt}
+     2112    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+      100    0.000    0.000    0.000    0.000 {method 'format' of 'str' objects}
+      606    0.000    0.000    0.000    0.000 tensor.py:593(__hash__)
+     3100    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+      100    0.000    0.000    0.001    0.000 grad_mode.py:119(__enter__)
+      100    0.000    0.000    0.017    0.000 functional.py:1651(log_softmax)
+      300    0.000    0.000    0.000    0.000 {built-in method torch._C.is_grad_enabled}
+      600    0.000    0.000    0.000    0.000 num_nodes.py:21(maybe_num_nodes)
+      100    0.000    0.000    0.000    0.000 _reduction.py:7(get_enum)
+      606    0.000    0.000    0.000    0.000 {built-in method builtins.id}
+      200    0.000    0.000    0.000    0.000 {built-in method torch._C._set_grad_enabled}
+      300    0.000    0.000    0.000    0.000 message_passing.py:300(update)
+      100    0.000    0.000    0.000    0.000 __init__.py:60(_tensor_or_tensors_to_tuple)
+      100    0.000    0.000    0.000    0.000 {built-in method torch._C._has_torch_function_variadic}
+      100    0.000    0.000    0.000    0.000 _jit_internal.py:833(is_scripting)
+        4    0.000    0.000    0.000    0.000 module.py:950(__setattr__)
+        7    0.000    0.000    0.000    0.000 module.py:1347(named_children)
+      4/1    0.000    0.000    0.000    0.000 module.py:1432(train)
+        7    0.000    0.000    0.000    0.000 module.py:1338(children)
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        3    0.000    0.000    0.000    0.000 {method 'add' of 'set' objects}
+
