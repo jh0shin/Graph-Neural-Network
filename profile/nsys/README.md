@@ -3,8 +3,8 @@
 ## Pytorch geometric
   open with Nsight Systems 2021.3.1
   
-  profiling with under command
-  > nsys profile --force-overwrite true -t cuda,osrt,nvtx,cudnn,cublas,opengl,openmp -o pyg.qdstrm -w true python3 pyg_dgl.py
+  profiling with 
+  ```nsys profile --force-overwrite true -t cuda,osrt,nvtx,cudnn,cublas,opengl,openmp -o pyg.qdstrm -w true python3 pyg_dgl.py```
   
 ![image](https://user-images.githubusercontent.com/59114042/133258777-234eef21-7b53-440f-831f-06e527d05600.png)
 ![image](https://user-images.githubusercontent.com/59114042/133258884-cdd73a0d-13fe-49c6-a311-1049c338ca55.png)
