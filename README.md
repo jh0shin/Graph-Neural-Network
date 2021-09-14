@@ -9,13 +9,16 @@
   2주차 내용 관련하여 동일 구조의 3 layer GCN을 Cora dataset에 대하여 PyG와 DGL 플랫폼에서 구현한 후, profiling을 통하여 분석을 진행합니다. GCN의 구조는 다음과 같습니다.
 > GCNConv -> ReLU -> GCNConv -> ReLU -> GCNConv -> log_softmax
   
-  ### /profile/cProfile, /profile/pytorch_profiler
-  cProfile(/profile/cProfile)과 pytorch profiler(/profile/pytorch_profiler)를 이용하여 각 method별 실행 시간을 비교하는 코드와 그 결과 텍스트 파일이 있습니다. cProfile의 경우 cpu 실행 시간만 측정이 되었고, pytorch profiler의 경우 cpu와 cuda 실행 시간이 모두 측정이 되었습니다.
+  ### /profile/pytorch_profiler
+
+  - [pytorch profiler 코드 출처](https://jh-bk.tistory.com/20)
+  
+  ### [/profile/cProfile](https://github.com/jh0shin/Graph-Neural-Network/tree/main/profile/cProfile)
+  
+  cProfile을 이용한 profiling입니다. Pytorch geometric 실행시에는 gcn_conv.py가, deep graph library 실행시에는 graphconv.py가 호출되는 것을 확인할 수 있습니다.
 
   - [total train function profiling result](https://github.com/jh0shin/Graph-Neural-Network/blob/main/profile/pytorch_profiler/profile_train_100_epoch.txt)
   - [single epoch forwarding profiling result](https://github.com/jh0shin/Graph-Neural-Network/blob/main/profile/pytorch_profiler/profile_forward_1_epoch.txt)
-
-  * [pytorch profiler 코드 출처](https://jh-bk.tistory.com/20)
   
   ### [/profile/nsys](https://github.com/jh0shin/Graph-Neural-Network/tree/main/profile/nsys)
   
