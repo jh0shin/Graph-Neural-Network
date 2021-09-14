@@ -40,10 +40,12 @@ class DGL_Net(nn.Module):
         self.layer3 = GraphConv(32, 7)
 
     def forward(self, g, features):
-        x1 = F.relu(self.layer1(g, features))
-        x2 = F.relu(self.layer2(g, x1))
-        x3 = self.layer3(g, x2)
-        return F.log_softmax(x3, dim=1)
+        with profiler.record_function("FORWARD"):
+            x1 = F.relu(self.layer1(g, features))
+            x2 = F.relu(self.layer2(g, x1))
+            x3 = self.layer3(g, x2)
+            x4 = F.log_softmax(x3, dim=1)
+        return x4
 
 class PYG_Net(torch.nn.Module):
     def __init__(self):
@@ -53,12 +55,14 @@ class PYG_Net(torch.nn.Module):
         self.layer3 = GCNConv(32, pyg_dataset.num_classes)
 
     def forward(self, data):
-        g, edge_index = data.x, data.edge_index
+        with profiler.record_function("FORWARD"):
+            g, edge_index = data.x, data.edge_index
 
-        x1 = F.relu(self.layer1(g, edge_index))
-        x2 = F.relu(self.layer2(x1, edge_index))
-        x3 = self.layer3(x2, edge_index)
-        return F.log_softmax(x3, dim=1)
+            x1 = F.relu(self.layer1(g, edge_index))
+            x2 = F.relu(self.layer2(x1, edge_index))
+            x3 = self.layer3(x2, edge_index)
+            x4 = F.log_softmax(x3, dim=1)
+        return x4
 
 ########################################
 ### Evaluate function declaration
