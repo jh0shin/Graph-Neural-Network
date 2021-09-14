@@ -26,6 +26,9 @@ from torch_geometric.datasets import Planetoid
 from dgl.data import CoraGraphDataset
 from dgl.nn import GraphConv
 
+### NVTX
+import torch.cuda.nvtx as nvtx
+
 ########################################
 ### GCN network class declaration
 ########################################
@@ -84,24 +87,33 @@ def pyg_evaluate(model, data):
 def dgl_train(model, optimizer, g, features, labels, mask):
     model.train()
     for epoch in range(_EPOCH):
+        nvtx.range_push(f"{epoch} epoch(s)")
+        nvtx.range_push("Conv forwarding")
         out = model(g, features)
+        nvtx.range_pop()
+        nvtx.range_push("Forwarding")
         all_logits.append(out)
         loss = F.nll_loss(out[mask], labels[mask])
-
         optimizer.zero_grad()
         loss.backward()
-    optimizer.step()
+        optimizer.step()
+        nvtx.range_pop()
+        nvtx.range_pop()
 
 def pyg_train(model, optimizer, data):
     model.train()
     for epoch in range(_EPOCH):
-        optimizer.zero_grad()
-
+        nvtx.range_push(f"{epoch} epoch(s)")
+        nvtx.range_push("Conv forwarding")
         out = model(data)
-
+        nvtx.range_pop()
+        nvtx.range_push("Forwarding")
         loss = F.nll_loss(out[data.train_mask], data.y[data.train_mask])
+        optimizer.zero_grad()
         loss.backward()
         optimizer.step()
+        nvtx.range_pop()
+        nvtx.range_pop()
     
 
 ########################################
@@ -111,42 +123,46 @@ def pyg_train(model, optimizer, data):
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 ### DGL dataset
-# dgl_dataset = CoraGraphDataset()
-# g = dgl_dataset[0].to(device)
-# features = g.ndata['feat']
-# labels = g.ndata['label']
-# train_mask = g.ndata['train_mask']
-# test_mask = g.ndata['test_mask']
+dgl_dataset = CoraGraphDataset()
+nvtx.range_push("Copy to device")
+g = dgl_dataset[0].to(device)
+nvtx.range_pop()
+features = g.ndata['feat']
+labels = g.ndata['label']
+train_mask = g.ndata['train_mask']
+test_mask = g.ndata['test_mask']
 
 # ### PYG dataset
-pyg_dataset = Planetoid(root='/tmp/Cora', name='Cora')
-data = pyg_dataset[0].to(device)
+# pyg_dataset = Planetoid(root='/tmp/Cora', name='Cora')
+# nvtx.range_push("Copy to device")
+# data = pyg_dataset[0].to(device)
+# nvtx.range_pop()
 
 ### network
-# dgl_net = DGL_Net().to(device)
-pyg_net = PYG_Net().to(device)
+dgl_net = DGL_Net().to(device)
+# pyg_net = PYG_Net().to(device)
 
 ### optimizer
-# dgl_optimizer = torch.optim.Adam(dgl_net.parameters(), lr=0.01)
-pyg_optimizer = torch.optim.Adam(pyg_net.parameters(), lr=0.01)
+dgl_optimizer = torch.optim.Adam(dgl_net.parameters(), lr=0.01)
+# pyg_optimizer = torch.optim.Adam(pyg_net.parameters(), lr=0.01)
 
 ########################################
 ### Training
 ########################################
 ### DGL
-# g.add_edges(g.nodes(), g.nodes())
-# all_logits=[]
-# dgl_train(dgl_net, dgl_optimizer, g, features, labels, train_mask)
+g.add_edges(g.nodes(), g.nodes())
+all_logits=[]
+dgl_train(dgl_net, dgl_optimizer, g, features, labels, train_mask)
 
 ### PYG
-pyg_train(pyg_net, pyg_optimizer, data)
+# pyg_train(pyg_net, pyg_optimizer, data)
 
 ########################################
 ### Result
 ########################################
 ### Accurary
-# acc = dgl_evaluate(dgl_net, g, features, labels, test_mask)
-# print('Accuracy: {:.4f}'.format(acc))
-
-acc = pyg_evaluate(pyg_net, data)
+acc = dgl_evaluate(dgl_net, g, features, labels, test_mask)
 print('Accuracy: {:.4f}'.format(acc))
+
+# acc = pyg_evaluate(pyg_net, data)
+# print('Accuracy: {:.4f}'.format(acc))
