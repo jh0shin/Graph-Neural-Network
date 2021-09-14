@@ -1,6 +1,6 @@
 # Nsys Profile Result
 
-## Pytorch geographic
+## Pytorch geometric
   open with Nsight Systems 2021.3.1
   
   profiling with under command
