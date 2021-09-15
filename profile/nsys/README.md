@@ -14,7 +14,7 @@
   open with Nsight Systems 2021.3.1
   
   profiling with under command
-  > nsys profile --force-overwrite true -t cuda,osrt,nvtx,cudnn,cublas,opengl,openmp -o dgl.qdstrm -w true python3 pyg_dgl.py
+  ```nsys profile --force-overwrite true -t cuda,osrt,nvtx,cudnn,cublas,opengl,openmp -o dgl.qdstrm -w true python3 pyg_dgl.py```
 
 ![image](https://user-images.githubusercontent.com/59114042/133261269-dfa7906e-8856-4cc9-8c5d-5e382b495c89.png)
 ![image](https://user-images.githubusercontent.com/59114042/133261306-86feca0d-1e96-422d-bc0e-8ed2caafb167.png)
