@@ -47,7 +47,7 @@ PyG profiling result
 
 @torch.jit._overload
 
--> [pytorch_sparse/csrc/cuda/spmm_cuda.cu(compiled to .so)](https://github.com/rusty1s/pytorch_sparse/blob/master/csrc/cuda/spmm_cuda.cu#L14)
+-> [pytorch_sparse/csrc/cuda/spmm_cuda.cu](https://github.com/rusty1s/pytorch_sparse/blob/master/csrc/cuda/spmm_cuda.cu#L14)
 
 ## Deep Graph Library
 
