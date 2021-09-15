@@ -12,13 +12,16 @@
   ### /profile/pytorch_profiler
 
   - [pytorch profiler 코드 출처](https://jh-bk.tistory.com/20)
+
+  - [total train function profiling result](https://github.com/jh0shin/Graph-Neural-Network/blob/main/profile/pytorch_profiler/profile_train_100_epoch.txt)
+  
+  - [single epoch forwarding profiling result](https://github.com/jh0shin/Graph-Neural-Network/blob/main/profile/pytorch_profiler/profile_forward_1_epoch.txt)
   
   ### [/profile/cProfile](https://github.com/jh0shin/Graph-Neural-Network/tree/main/profile/cProfile)
   
   cProfile을 이용한 profiling입니다. Pytorch geometric 실행시에는 gcn_conv.py가, deep graph library 실행시에는 graphconv.py가 호출되는 것을 확인할 수 있습니다.
 
-  - [total train function profiling result](https://github.com/jh0shin/Graph-Neural-Network/blob/main/profile/pytorch_profiler/profile_train_100_epoch.txt)
-  - [single epoch forwarding profiling result](https://github.com/jh0shin/Graph-Neural-Network/blob/main/profile/pytorch_profiler/profile_forward_1_epoch.txt)
+  - [cProfile 코드 출처](https://jeongukjae.github.io/posts/cpu-profiler/)
   
   ### [/profile/nsys](https://github.com/jh0shin/Graph-Neural-Network/tree/main/profile/nsys)
   
