@@ -6,7 +6,7 @@
 - [pyg_simplegcn.py 코드 출처](https://baeseongsu.github.io/posts/pytorch-geometric-introduction/)
 
 ## /profile
-  2주차 내용 관련하여 동일 구조의 3 layer GCN을 Cora dataset에 대하여 PyG와 DGL 플랫폼에서 구현한 후, profiling을 통하여 분석을 진행합니다. GCN의 구조는 다음과 같습니다.
+  2주차 내용 관련하여 동일 구조의 3 layer GCN을 Cora dataset에 대하여 PyG와 DGL 플랫폼에서 구현한 후, profiling을 통하여 분석을 진행합니다. GNN의 구조는 다음과 같습니다.
 > GCNConv -> ReLU -> GCNConv -> ReLU -> GCNConv -> log_softmax
   
   ### /profile/pytorch_profiler
