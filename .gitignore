@@ -1,2 +1,6 @@
-# PyG
+# data
 /data
+/profile/dataset
+
+# pycache
+/profile/__pycache__
