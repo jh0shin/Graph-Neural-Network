@@ -13,9 +13,9 @@
 
   - [pytorch profiler 코드 출처](https://jh-bk.tistory.com/20)
 
-  - [total train function profiling result](https://github.com/jh0shin/Graph-Neural-Network/blob/main/profile/pytorch_profiler/profile_train_100_epoch.txt)
+  - [total train function profiling result](https://github.com/jh0shin/Graph-Neural-Network/blob/main/profile/profiler/pytorch_profiler/profile_train_100_epoch.txt)
   
-  - [single epoch forwarding profiling result](https://github.com/jh0shin/Graph-Neural-Network/blob/main/profile/pytorch_profiler/profile_forward_1_epoch.txt)
+  - [single epoch forwarding profiling result](https://github.com/jh0shin/Graph-Neural-Network/blob/main/profile/profiler/pytorch_profiler/profile_forward_1_epoch.txt)
   
   ### [/profile/profiler/cProfile](https://github.com/jh0shin/Graph-Neural-Network/tree/main/profile/profiler/cProfile)
   
