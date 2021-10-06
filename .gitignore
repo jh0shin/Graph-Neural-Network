@@ -1,6 +1,7 @@
 # data
 /data
 /profile/dataset
+/profile/*/dataset
 
 # pycache
 /profile/__pycache__

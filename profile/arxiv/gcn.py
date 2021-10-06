@@ -3,9 +3,6 @@
 GCN network and function declaration
 '''
 
-### Constants
-_EPOCH = 100
-
 ########################################
 ### Library
 ########################################
@@ -22,6 +19,43 @@ from dgl.nn import GraphConv
 
 ### Evaluator
 from ogb.nodeproppred import Evaluator
+
+########################################
+### Library
+########################################
+### Common library
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+import numpy as np
+
+### Pytorch Geometric
+from torch_geometric.nn import GCNConv
+import torch_geometric as tg
+
+### Deep Graph Library
+from dgl.nn import GraphConv
+
+### Evaluator
+from ogb.nodeproppred import Evaluator
+
+########################################
+### Utils
+########################################
+def log_metric(name, values, tags={}):
+    """Log timeseries data
+       This function will be overwritten when called through run.py"""
+    value_list = []
+    for key in sorted(values.keys()):
+        value = values[key]
+        value_list.append(f"{key}:{value:7.3f}")
+    values = ", ".join(value_list)
+    tag_list = []
+    for key, tag in tags.items():
+        tag_list.append(f"{key}:{tag}")
+    tags = ", ".join(tag_list)
+    # print("{name:30s} - {values} ({tags})".format(name=name, values=values, tags=tags))
 
 ########################################
 ### Deep Graph Library - GCN
@@ -49,16 +83,15 @@ def dgl_evaluate(model, g, features, labels, mask):
         correct = torch.sum(indices == labels)
         return correct.item() * 1.0 / len(labels)
 
-def dgl_train(model, optimizer, g, features, labels, mask, all_logits):
+def dgl_train(model, optimizer, g, features, labels, mask, timer):
     model.train()
-    for epoch in range(_EPOCH):
-        out = model(g, features)
-        all_logits.append(out)
-        loss = F.nll_loss(out[mask], labels[mask])
 
-        optimizer.zero_grad()
-        loss.backward()
-        optimizer.step()
+    with timer("forward"): out = model(g, features)
+    with timer("loss"): loss = F.nll_loss(out[mask], labels.squeeze(1)[mask])
+
+    optimizer.zero_grad()
+    with timer("backward"): loss.backward()
+    with timer("optimizer.step"): optimizer.step()
 
 ########################################
 ### Pytorch Geometric - GCN
@@ -87,12 +120,11 @@ def pyg_evaluate(model, evaluator, data, test_idx):
         'y_pred': y_pred[test_idx],
     })['acc']
 
-def pyg_train(model, optimizer, data, train_idx):
+def pyg_train(model, optimizer, data, train_idx, timer):
     model.train()
 
-    for epoch in range(_EPOCH):
-        optimizer.zero_grad()
-        out = model(data.x, data.adj_t)[train_idx]
-        loss = F.nll_loss(out, data.y.squeeze(1)[train_idx])
-        loss.backward()
-        optimizer.step()
+    optimizer.zero_grad()
+    with timer("forward"): out = model(data.x, data.adj_t)[train_idx]
+    with timer("loss"): loss = F.nll_loss(out, data.y.squeeze(1)[train_idx])
+    with timer("backward"): loss.backward()
+    with timer("optimizer.step"): optimizer.step()
