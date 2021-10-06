@@ -35,3 +35,7 @@
   
   - [pyprof 코드 출처](https://docs.nvidia.com/deeplearning/frameworks/pyprof-user-guide/install.html)
   
+## /profile/{dataset}
+  3주차 내용 관련하여 각 dataset의 pyg, dgl 실행 코드와 그 실행 결과가 저장되어 있습니다.
+  
+  [Command and result](https://github.com/jh0shin/Graph-Neural-Network/tree/main/profile)
