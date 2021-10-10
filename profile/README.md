@@ -41,3 +41,19 @@ Using backend: pytorch
 - optimizer.step                 |    100 |     0.00085s |   1.0%
 -----------------------------------------------------------------
 ```
+
+### obgn-products (100 epoches, 16 sub-clusters)
+sub-clustering이나 batch를 사용하지 않을 경우 CUDA out of memory가 발생하였습니다.
+
+```
+$ python3 products/profile.py --platform pyg --dataset ogbn-products
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- backward                       |   1600 |     0.02130s |   6.6%
+- batch generate                 |    100 |     2.87562s |  55.4%
+- forward                        |   1600 |     0.02434s |   7.5%
+- loss                           |   1600 |     0.00105s |   0.3%
+- optimizer.step                 |   1600 |     0.00093s |   0.3%
+- train preprocess               |    100 |     0.00806s |   0.2%
+-----------------------------------------------------------------
+```
