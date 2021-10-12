@@ -1,7 +1,7 @@
 # Pyprof Profile Result
 
 profiling with 
-```nvprof –log-file {platform}_nvprof.txt python pyg_dgl.py```
+```nvprof -–log-file {platform}_nvprof.txt python pyg_dgl.py```
 
 ## Pytorch geometric
 
