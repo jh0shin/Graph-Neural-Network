@@ -60,17 +60,21 @@ custom [__graphconv_profile.py__](https://github.com/jh0shin/Graph-Neural-Networ
 ```
 $ python3 arxiv/baseline_timer2.py --platform dgl --dataset ogbn-arxiv
 Using backend: pytorch
-Accuracy: 0.5881
+Accuracy: 0.5936
 --- Timer summary -----------------------------------------------
   Event                          |  Count | Average time |  Frac.
-- activation                     |    303 |     0.00043s |   3.1%
-- bias                           |    303 |     0.00044s |   3.2%
+- activation                     |    303 |     0.00044s |   3.1%
+- bias                           |    303 |     0.00045s |   3.1%
+- degree                         |    606 |     0.00043s |   6.1%
+- etc                            |    606 |     0.00003s |   0.5%
+- expand_as_pair                 |    303 |     0.00001s |   0.1%
 - fn.copy_src                    |    303 |     0.00001s |   0.1%
-- mul                            |    606 |     0.00051s |   7.3%
-- th.matmul                      |    303 |     0.00076s |   5.4%
-- th.pow                         |    606 |     0.00006s |   0.8%
-- th.reshape                     |    606 |     0.00001s |   0.2%
-- update_all; fn.sum             |    303 |     0.00449s |  32.2%
+- mul                            |    606 |     0.00054s |   7.5%
+- shape                          |    606 |     0.00001s |   0.1%
+- th.matmul                      |    303 |     0.00075s |   5.3%
+- th.pow                         |    606 |     0.00006s |   0.9%
+- th.reshape                     |    606 |     0.00002s |   0.2%
+- update_all; fn.sum             |    303 |     0.00452s |  31.7%
 -----------------------------------------------------------------
 ```
 
