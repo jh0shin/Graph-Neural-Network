@@ -14,9 +14,9 @@ nvprof python3 arxiv/baseline_pyprof.py --platform pyg --dataset ogbn-arxiv
 
 
 ## Result
-### baseline (custom timer class) (100 epoches)
+### Timer (custom class) (100 epoches)
 ```
-$ python3 arxiv/baseline.py --platform pyg --dataset ogbn-arxiv
+$ python3 arxiv/baseline_timer.py --platform pyg --dataset ogbn-arxiv
 Using backend: pytorch
 Accuracy: 0.6715
 --- Timer summary -----------------------------------------------
@@ -28,7 +28,7 @@ Accuracy: 0.6715
 -----------------------------------------------------------------
 ```
 ```
-$ python3 arxiv/baseline.py --platform dgl --dataset ogbn-arxiv
+$ python3 arxiv/baseline_timer.py --platform dgl --dataset ogbn-arxiv
 Using backend: pytorch
 Accuracy: 0.5909
 --- Timer summary -----------------------------------------------
@@ -37,6 +37,40 @@ Accuracy: 0.5909
 - forward                        |    100 |     0.02289s |  57.1%
 - loss                           |    100 |     0.00191s |   4.8%
 - optimizer.step                 |    100 |     0.00085s |   2.1%
+-----------------------------------------------------------------
+```
+
+### Timer2 (custom class) (100 epoches)
+custom [__gcn_conv_custom.py__](https://github.com/jh0shin/Graph-Neural-Network/blob/main/profile/arxiv/package/pyg/gcn_conv_custom.py) for detail profiling
+```
+$ python3 arxiv/baseline_timer2.py --platform pyg --dataset ogbn-arxiv
+Using backend: pytorch
+Accuracy: 0.6596
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- bias                           |    303 |     0.00057s |   1.8%
+- gcn_norm                       |    303 |     0.00771s |  23.9%
+- message_and_aggregate          |    303 |     0.01243s |  38.5%
+- mul                            |    303 |     0.00081s |   2.5%
+- propagate                      |    303 |     0.01253s |  38.8%
+-----------------------------------------------------------------
+```
+
+custom [__graphconv_profile.py__](https://github.com/jh0shin/Graph-Neural-Network/blob/main/profile/arxiv/package/dgl/graphconv_profile.py) for detail profiling
+```
+$ python3 arxiv/baseline_timer2.py --platform dgl --dataset ogbn-arxiv
+Using backend: pytorch
+Accuracy: 0.5881
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- activation                     |    303 |     0.00043s |   3.1%
+- bias                           |    303 |     0.00044s |   3.2%
+- fn.copy_src                    |    303 |     0.00001s |   0.1%
+- mul                            |    606 |     0.00051s |   7.3%
+- th.matmul                      |    303 |     0.00076s |   5.4%
+- th.pow                         |    606 |     0.00006s |   0.8%
+- th.reshape                     |    606 |     0.00001s |   0.2%
+- update_all; fn.sum             |    303 |     0.00449s |  32.2%
 -----------------------------------------------------------------
 ```
 
