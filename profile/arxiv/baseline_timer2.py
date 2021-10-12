@@ -25,7 +25,7 @@ import torch
 import torch.nn.functional as F
 
 import torch_geometric.transforms as T
-from torch_geometric.nn import Sequential, GCNConv
+from torch_geometric.nn import Sequential, GCNConv2
 from torch.nn import ReLU, LogSoftmax
 
 from dgl.nn.pytorch import Sequential as DglSequential
@@ -87,11 +87,11 @@ if args.platform == 'pyg':
     graph = dataset[0]
     adj = graph.adj_t.to_symmetric()
     model = Sequential('x, edge_index', [
-        (GCNConv(graph.num_features, args.hidden_channel), 'x, edge_index -> x'),
+        (GCNConv2(graph.num_features, args.hidden_channel, timer), 'x, edge_index -> x'),
         ReLU(inplace=True),
-        (GCNConv(args.hidden_channel, args.hidden_channel), 'x, edge_index -> x'),
+        (GCNConv2(args.hidden_channel, args.hidden_channel, timer), 'x, edge_index -> x'),
         ReLU(inplace=True),
-        (GCNConv(args.hidden_channel, dataset.num_classes), 'x, edge_index -> x'),
+        (GCNConv2(args.hidden_channel, dataset.num_classes, timer), 'x, edge_index -> x'),
         LogSoftmax(dim=1),
     ]).to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
@@ -104,10 +104,10 @@ if args.platform == 'pyg':
     model.train()
     for _ in range(_EPOCH):      
         optimizer.zero_grad()
-        with timer("forward"): out = model(data.x, data.adj_t)[train_idx]
-        with timer("loss"): loss = F.nll_loss(out, data.y.squeeze(1)[train_idx])
-        with timer("backward"): loss.backward()
-        with timer("optimizer.step"): optimizer.step()
+        out = model(data.x, data.adj_t)[train_idx]
+        loss = F.nll_loss(out, data.y.squeeze(1)[train_idx])
+        loss.backward()
+        optimizer.step()
 
     model.eval()
     out = model(data.x, data.adj_t)
