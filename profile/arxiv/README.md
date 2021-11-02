@@ -14,9 +14,96 @@ nvprof python3 arxiv/baseline_pyprof.py --platform pyg --dataset ogbn-arxiv
 
 
 ## Result
-### baseline (custom timer class) (100 epoches)
+### Timer2 (custom class) (100 epoches)
+custom [__gcn_conv_custom.py__](https://github.com/jh0shin/Graph-Neural-Network/blob/main/profile/arxiv/package/pyg/gcn_conv_custom.py) for detail profiling
 ```
-$ python3 arxiv/baseline.py --platform pyg --dataset ogbn-arxiv
+$ python3 arxiv/baseline_timer2.py --platform pyg --dataset ogbn-arxiv
+Using backend: pytorch
+Accuracy: 0.6596
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- bias                           |    303 |     0.00057s |   1.8%
+- gcn_norm                       |    303 |     0.00771s |  23.9%
+- message_and_aggregate          |    303 |     0.01243s |  38.5%
+- mul                            |    303 |     0.00081s |   2.5%
+- propagate                      |    303 |     0.01253s |  38.8%
+-----------------------------------------------------------------
+```
+```
+PyG - propagate                      |    303 |     0.01138s |  38.7%
+
+(Pytorch Geometric - .local/lib/python3.8/site-packages/torch_geometric/nn/conv/gcn_conv.py)
+GCNConv.forward -> self.propagate -> message_and_aggregate -> matmul
+
+(torch_sparse - .local/lib/python3.8/site-packages/torch_sparse/matmul.py)
+matmul -> spmm -> spmm_sum -> torch.ops.torch_sparse.spmm_sum(row, rowptr, col, value, colptr, csr2csc, other)
+
+(https://github.com/rusty1s/pytorch_sparse/blob/master/torch_sparse/__init__.py#L14-L15)
+torch_sparse.__init__.py
+
+(torch_sparse c build - https://github.com/rusty1s/pytorch_sparse#c-api)
+
+(? https://github.com/rusty1s/pytorch_sparse/blob/master/csrc/cuda/spmm_cuda.cu)
+spmm_cuda
+```
+
+custom [__graphconv_profile.py__](https://github.com/jh0shin/Graph-Neural-Network/blob/main/profile/arxiv/package/dgl/graphconv_profile.py) for detail profiling
+```
+$ python3 arxiv/baseline_timer2.py --platform dgl --dataset ogbn-arxiv
+Using backend: pytorch
+Accuracy: 0.5936
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- activation                     |    303 |     0.00044s |   3.1%
+- bias                           |    303 |     0.00045s |   3.1%
+- degree                         |    606 |     0.00043s |   6.1%
+- etc                            |    606 |     0.00003s |   0.5%
+- expand_as_pair                 |    303 |     0.00001s |   0.1%
+- fn.copy_src                    |    303 |     0.00001s |   0.1%
+- mul                            |    606 |     0.00054s |   7.5%
+- shape                          |    606 |     0.00001s |   0.1%
+- th.matmul                      |    303 |     0.00075s |   5.3%
+- th.pow                         |    606 |     0.00006s |   0.9%
+- th.reshape                     |    606 |     0.00002s |   0.2%
+- update_all; fn.sum             |    303 |     0.00452s |  31.7%
+-----------------------------------------------------------------
+```
+```
+DGL - update_all; fn.sum             |    303 |     0.00452s |  31.7%
+
+(DGL - .local/lib/python3.8/site-packages/dgl/nn/pytorch/conv/graphconv.py)
+graph.update_all(aggregate_fn, fn.sum(msg=’m’, out=’h’))
+
+(DGLGraph (DGLHeteroGraph) / .local/lib/python3.8/site-packages/dgl/heterograph.py)
+update_all -> message_passing
+
+(Core - .local/lib/python3.8/site-packages/dgl/core.py)
+message_passing -> invoke_gspmm -> dgl.ops.copy_u_sum
+
+(spmm - .local/lib/python3.8/site-packages/dgl/ops/spmm.py)
+gspmm(g, 'copy_lhs', reduce_op, x, None) -> gspmm_internal(g._graph, op, 'sum' if reduce_op == 'mean' else reduce_op, lhs_data, rhs_data)
+DGLHeteroGraphIndex, ‘copy_lhs’, sum, Tensor, None
+
+(backend - .local/lib/python3.8/site-packages/dgl/backend/__init__.py)
+call backend/pytorch/__init__.py -> sparse
+
+(Sparse - .local/lib/python3.8/site-packages/dgl/backend/pytorch/sparse.py)
+gspmm -> GSpMM.apply(...)	in forward, call _gspmm(...)
+
+(Sparse - .local/lib/python3.8/site-packages/dgl/sparse.py)
+_gspmm(gidx, op, reduce_op, X, Y) -> _CAPI_DGLKernelSpMM(...) (import)
+DGLHeteroGraphIndex, ‘copy_lhs’, sum, Tensor, None
+
+cf) _CAPI import - .local/lib/python3.8/site-packages/dgl/_ffi/function.py
+_ffi.function._init_api(“dgl.sparse”) -> _init_api_prefix(“dgl.sparse”, “sparse”)
+list_global_func_names()에 sparse._CAPI_DGLKernelSpMM 포함
+_ffi.base._load_lib()에서 ctypes.CDLL로 /home/junho/.local/lib/python3.8/site-packages/dgl/libdgl.so에서 library 목록 호출
+
+```
+
+### Timer (custom class) (100 epoches)
+```
+$ python3 arxiv/baseline_timer.py --platform pyg --dataset ogbn-arxiv
 Using backend: pytorch
 Accuracy: 0.6715
 --- Timer summary -----------------------------------------------
@@ -28,7 +115,7 @@ Accuracy: 0.6715
 -----------------------------------------------------------------
 ```
 ```
-$ python3 arxiv/baseline.py --platform dgl --dataset ogbn-arxiv
+$ python3 arxiv/baseline_timer.py --platform dgl --dataset ogbn-arxiv
 Using backend: pytorch
 Accuracy: 0.5909
 --- Timer summary -----------------------------------------------
