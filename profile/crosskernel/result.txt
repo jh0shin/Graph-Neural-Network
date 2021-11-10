@@ -1,0 +1,96 @@
+### Matrix size
+$ python3 crosskernel/benchmark.py
+Using backend: pytorch
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- Dense mm                       |    100 |     0.01239s |  99.6%
+-----------------------------------------------------------------
+
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- Dense mm                       |    100 |     0.04967s |  99.9%
+-----------------------------------------------------------------
+
+Traceback (most recent call last):
+  File "crosskernel/benchmark.py", line 114, in <module>
+    dense_out = torch.from_numpy(_densemat).to('cuda') @ mat
+RuntimeError: CUDA out of memory. Tried to allocate 9.31 GiB (GPU 0; 8.00 GiB total capacity; 153.66 MiB already allocated; 5.50 GiB free; 500.00 MiB reserved in total by PyTorch)
+
+$ python3 crosskernel/benchmark.py
+Using backend: pytorch
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00046s |  48.0%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00026s |  28.0%
+- PyG spmm                       |    100 |     0.00017s |  18.0%
+-----------------------------------------------------------------
+
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00067s |  45.6%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00039s |  27.2%
+- PyG spmm                       |    100 |     0.00030s |  20.8%
+-----------------------------------------------------------------
+
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00583s |  44.7%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00380s |  29.5%
+- PyG spmm                       |    100 |     0.00335s |  25.7%
+-----------------------------------------------------------------
+
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.02110s |  40.1%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.01498s |  28.7%
+- PyG spmm                       |    100 |     0.01665s |  31.6%
+-----------------------------------------------------------------
+
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.07345s |  37.6%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.05362s |  27.7%
+- PyG spmm                       |    100 |     0.06929s |  35.5%
+-----------------------------------------------------------------
+
+# Density
+$ python3 crosskernel/benchmark.py
+Using backend: pytorch
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00293s |  40.7%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00197s |  27.7%
+- PyG spmm                       |    100 |     0.00230s |  31.8%
+-----------------------------------------------------------------
+
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.01001s |  40.6%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00699s |  28.6%
+- PyG spmm                       |    100 |     0.00774s |  31.4%
+-----------------------------------------------------------------
+
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.01902s |  40.0%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.01352s |  28.7%
+- PyG spmm                       |    100 |     0.01510s |  31.8%
+-----------------------------------------------------------------
+
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.08829s |  40.0%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.06570s |  30.1%
+- PyG spmm                       |    100 |     0.06798s |  30.8%
+-----------------------------------------------------------------
+
+Traceback (most recent call last):
+  File "crosskernel/benchmark.py", line 96, in <module>
+    _spmat = SparseTensor.from_scipy(spmat).to('cuda')
+  File "/home/junho/.local/lib/python3.8/site-packages/torch_sparse/tensor.py", line 452, in to
+    self = self.device_as(torch.tensor(0., device=device), non_blocking)
+  File "/home/junho/.local/lib/python3.8/site-packages/torch_sparse/tensor.py", line 142, in device_as
+    return self.from_storage(self.storage.device_as(tensor, non_blocking))
+  File "/home/junho/.local/lib/python3.8/site-packages/torch_sparse/storage.py", line 492, in device_as
+    col = self._col.to(tensor.device, non_blocking=non_blocking)
+RuntimeError: CUDA out of memory. Tried to allocate 764.00 MiB (GPU 0; 8.00 GiB total capacity; 5.04 GiB already allocated; 193.56 MiB free; 5.05 GiB reserved in total by PyTorch)
