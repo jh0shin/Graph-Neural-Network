@@ -1,0 +1,428 @@
+$ python3 crosskernel/benchmark.py
+Using backend: pytorch
+100000 1.4142135623730953e-05 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00142s |  35.8%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00112s |  28.6%
+- PyG spmm                       |    100 |     0.00140s |  34.9%
+-----------------------------------------------------------------
+
+100000 2e-05 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00150s |  37.7%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00108s |  27.2%
+- PyG spmm                       |    100 |     0.00135s |  33.8%
+-----------------------------------------------------------------
+
+100000 2.8284271247461906e-05 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00157s |  37.1%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00112s |  26.8%
+- PyG spmm                       |    100 |     0.00148s |  35.0%
+-----------------------------------------------------------------
+
+100000 4e-05 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00181s |  38.5%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00124s |  26.6%
+- PyG spmm                       |    100 |     0.00163s |  34.4%
+-----------------------------------------------------------------
+
+100000 5.656854249492381e-05 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00210s |  38.8%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00147s |  27.3%
+- PyG spmm                       |    100 |     0.00179s |  33.1%
+-----------------------------------------------------------------
+
+100000 8e-05 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00263s |  41.0%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00171s |  26.9%
+- PyG spmm                       |    100 |     0.00202s |  31.5%
+-----------------------------------------------------------------
+
+100000 0.00011313708498984762 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00314s |  40.4%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00215s |  27.8%
+- PyG spmm                       |    100 |     0.00247s |  31.7%
+-----------------------------------------------------------------
+
+100000 0.00016 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00402s |  40.7%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00282s |  28.6%
+- PyG spmm                       |    100 |     0.00305s |  30.7%
+-----------------------------------------------------------------
+
+100000 0.00022627416997969525 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00538s |  41.1%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00370s |  28.4%
+- PyG spmm                       |    100 |     0.00399s |  30.5%
+-----------------------------------------------------------------
+
+100000 0.00032 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00719s |  40.4%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00500s |  28.3%
+- PyG spmm                       |    100 |     0.00558s |  31.3%
+-----------------------------------------------------------------
+
+100000 0.0004525483399593905 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00967s |  40.2%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00676s |  28.3%
+- PyG spmm                       |    100 |     0.00761s |  31.7%
+-----------------------------------------------------------------
+
+100000 0.00064 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.01306s |  40.1%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00927s |  28.7%
+- PyG spmm                       |    100 |     0.01024s |  31.5%
+-----------------------------------------------------------------
+
+100000 0.000905096679918781 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.01791s |  40.0%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.01272s |  28.6%
+- PyG spmm                       |    100 |     0.01422s |  31.8%
+-----------------------------------------------------------------
+
+100000 0.00128 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.02486s |  39.9%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.01762s |  28.5%
+- PyG spmm                       |    100 |     0.01994s |  32.0%
+-----------------------------------------------------------------
+
+100000 0.001810193359837562 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.03481s |  39.8%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.02473s |  28.6%
+- PyG spmm                       |    100 |     0.02800s |  32.1%
+-----------------------------------------------------------------
+
+100000 0.00256 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.04758s |  39.8%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.03395s |  28.6%
+- PyG spmm                       |    100 |     0.03853s |  32.2%
+-----------------------------------------------------------------
+
+100000 0.003620386719675124 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.07062s |  41.3%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.04786s |  28.9%
+- PyG spmm                       |    100 |     0.05332s |  31.2%
+-----------------------------------------------------------------
+
+100000 0.00512 34 100
+Traceback (most recent call last):
+  File "crosskernel/benchmark.py", line 129, in <module>
+    dgl_out2 = op2(_g2, mat)
+  File "/home/junho/.local/lib/python3.8/site-packages/dgl/ops/spmm.py", line 191, in func
+    return gspmm(g, 'copy_lhs', reduce_op, x, None)
+  File "/home/junho/.local/lib/python3.8/site-packages/dgl/ops/spmm.py", line 75, in gspmm
+    ret = gspmm_internal(g._graph, op,
+  File "/home/junho/.local/lib/python3.8/site-packages/dgl/backend/pytorch/sparse.py", line 494, in gspmm
+    return GSpMM.apply(gidx, op, reduce_op, lhs_data, rhs_data)
+RuntimeError: CUDA out of memory. Tried to allocate 392.00 MiB (GPU 0; 8.00 GiB total capacity; 5.20 GiB already allocated; 0 bytes free; 5.34 GiB reserved in total by PyTorch)
+
+========================================================
+
+$ python3 crosskernel/benchmark.py
+Using backend: pytorch
+50000 0.0001 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00122s |  41.2%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00077s |  26.8%
+- PyG spmm                       |    100 |     0.00094s |  31.4%
+-----------------------------------------------------------------
+
+50000 0.0001414213562373095 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00128s |  42.0%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00082s |  27.1%
+- PyG spmm                       |    100 |     0.00089s |  29.4%
+-----------------------------------------------------------------
+
+50000 0.0002 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00156s |  42.6%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00101s |  27.9%
+- PyG spmm                       |    100 |     0.00104s |  28.2%
+-----------------------------------------------------------------
+
+50000 0.000282842712474619 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00192s |  43.7%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00123s |  28.3%
+- PyG spmm                       |    100 |     0.00120s |  27.2%
+-----------------------------------------------------------------
+
+50000 0.0004 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00239s |  43.4%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00164s |  29.9%
+- PyG spmm                       |    100 |     0.00145s |  26.2%
+-----------------------------------------------------------------
+
+50000 0.000565685424949238 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00316s |  44.0%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00212s |  29.8%
+- PyG spmm                       |    100 |     0.00185s |  25.9%
+-----------------------------------------------------------------
+
+50000 0.0008 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00421s |  44.4%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00280s |  29.8%
+- PyG spmm                       |    100 |     0.00244s |  25.7%
+-----------------------------------------------------------------
+
+50000 0.001131370849898476 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00566s |  44.4%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00378s |  29.9%
+- PyG spmm                       |    100 |     0.00329s |  25.9%
+-----------------------------------------------------------------
+
+50000 0.0016 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00768s |  44.2%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00519s |  30.2%
+- PyG spmm                       |    100 |     0.00451s |  26.0%
+-----------------------------------------------------------------
+
+50000 0.002262741699796952 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.01102s |  44.5%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00734s |  30.0%
+- PyG spmm                       |    100 |     0.00631s |  25.6%
+-----------------------------------------------------------------
+
+50000 0.0032 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.01429s |  44.6%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00947s |  29.9%
+- PyG spmm                       |    100 |     0.00828s |  25.9%
+-----------------------------------------------------------------
+
+50000 0.004525483399593904 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.01985s |  44.4%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.01350s |  30.5%
+- PyG spmm                       |    100 |     0.01139s |  25.5%
+-----------------------------------------------------------------
+
+50000 0.0064 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.02719s |  45.1%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.01832s |  30.8%
+- PyG spmm                       |    100 |     0.01488s |  24.7%
+-----------------------------------------------------------------
+
+50000 0.009050966799187809 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.04271s |  46.1%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.02896s |  31.5%
+- PyG spmm                       |    100 |     0.02122s |  23.0%
+-----------------------------------------------------------------
+
+50000 0.0128 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.06556s |  47.1%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.04524s |  32.9%
+- PyG spmm                       |    100 |     0.02870s |  20.7%
+-----------------------------------------------------------------
+
+50000 0.018101933598375617 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.09561s |  48.7%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.06318s |  33.1%
+- PyG spmm                       |    100 |     0.03826s |  19.5%
+-----------------------------------------------------------------
+
+50000 0.0256 34 100
+Killed
+
+=======================================================================
+
+$ python3 crosskernel/benchmark.py
+Using backend: pytorch
+25000 0.0004 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00104s |  45.0%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00062s |  27.7%
+- PyG spmm                       |    100 |     0.00059s |  25.4%
+-----------------------------------------------------------------
+
+25000 0.000565685424949238 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00113s |  45.9%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00071s |  29.2%
+- PyG spmm                       |    100 |     0.00055s |  22.2%
+-----------------------------------------------------------------
+
+25000 0.0008 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00137s |  47.1%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00089s |  30.7%
+- PyG spmm                       |    100 |     0.00059s |  20.1%
+-----------------------------------------------------------------
+
+25000 0.001131370849898476 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00170s |  48.5%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00104s |  30.0%
+- PyG spmm                       |    100 |     0.00069s |  19.8%
+-----------------------------------------------------------------
+
+25000 0.0016 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00220s |  49.0%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00136s |  30.7%
+- PyG spmm                       |    100 |     0.00086s |  19.3%
+-----------------------------------------------------------------
+
+25000 0.002262741699796952 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00296s |  49.2%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00184s |  30.9%
+- PyG spmm                       |    100 |     0.00113s |  18.9%
+-----------------------------------------------------------------
+
+25000 0.0032 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00400s |  50.0%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00244s |  30.9%
+- PyG spmm                       |    100 |     0.00145s |  18.2%
+-----------------------------------------------------------------
+
+25000 0.004525483399593904 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00517s |  50.8%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00313s |  31.1%
+- PyG spmm                       |    100 |     0.00183s |  18.0%
+-----------------------------------------------------------------
+
+25000 0.0064 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00709s |  51.4%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00425s |  31.3%
+- PyG spmm                       |    100 |     0.00240s |  17.5%
+-----------------------------------------------------------------
+
+25000 0.009050966799187809 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.00975s |  51.2%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00600s |  31.9%
+- PyG spmm                       |    100 |     0.00325s |  17.1%
+-----------------------------------------------------------------
+
+25000 0.0128 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.01376s |  51.7%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.00823s |  31.3%
+- PyG spmm                       |    100 |     0.00458s |  17.2%
+-----------------------------------------------------------------
+
+25000 0.018101933598375617 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.01899s |  52.0%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.01121s |  31.1%
+- PyG spmm                       |    100 |     0.00631s |  17.3%
+-----------------------------------------------------------------
+
+25000 0.0256 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.02694s |  52.2%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.01588s |  31.2%
+- PyG spmm                       |    100 |     0.00869s |  16.9%
+-----------------------------------------------------------------
+
+25000 0.036203867196751234 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.03763s |  52.6%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.02221s |  31.4%
+- PyG spmm                       |    100 |     0.01178s |  16.5%
+-----------------------------------------------------------------
+
+25000 0.0512 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.05318s |  52.7%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.03179s |  32.0%
+- PyG spmm                       |    100 |     0.01601s |  15.9%
+-----------------------------------------------------------------
+
+25000 0.07240773439350247 34 100
+--- Timer summary -----------------------------------------------
+  Event                          |  Count | Average time |  Frac.
+- DGL spmm (u_mul_e_sum)         |    100 |     0.07550s |  53.6%
+- DGL spmm 2 (copy_u_sum)        |    100 |     0.04370s |  31.7%
+- PyG spmm                       |    100 |     0.02194s |  15.6%
+-----------------------------------------------------------------
+
+25000 0.1024 34 100
+Traceback (most recent call last):
+  File "crosskernel/benchmark.py", line 126, in <module>
+    dgl_out = op(_g, mat, _g.edata['w'])
+  File "/home/junho/.local/lib/python3.8/site-packages/dgl/ops/spmm.py", line 149, in func
+    return gspmm(g, binary_op, reduce_op, x, y)
+  File "/home/junho/.local/lib/python3.8/site-packages/dgl/ops/spmm.py", line 75, in gspmm
+    ret = gspmm_internal(g._graph, op,
+  File "/home/junho/.local/lib/python3.8/site-packages/dgl/backend/pytorch/sparse.py", line 494, in gspmm
+    return GSpMM.apply(gidx, op, reduce_op, lhs_data, rhs_data)
+RuntimeError: CUDA out of memory. Tried to allocate 490.00 MiB (GPU 0; 8.00 GiB total capacity; 4.83 GiB already allocated; 90.09 MiB free; 5.17 GiB reserved in total by PyTorch)

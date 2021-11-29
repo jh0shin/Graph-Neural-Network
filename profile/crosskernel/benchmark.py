@@ -27,6 +27,7 @@ from util.timer import Timer
 # RANDSEED = 34
 # ITER = 1
 # [MAT_SIZE, DENSITY, RANDSEED, ITER]
+'''
 settings = [
     # # Matrix size
     # [5000, 0.001, 34, 100],
@@ -36,21 +37,23 @@ settings = [
     # [200000, 0.001, 34, 100],
 
     # Density
-    [100000, 0.0001, 34, 100],
-    [100000, 0.0005, 34, 100],
-    [100000, 0.001, 34, 100],
-    [100000, 0.005, 34, 100],
+    # [100000, 0.0001, 34, 100],
+    # [100000, 0.0005, 34, 100],
+    # [100000, 0.001, 34, 100],
+    # [100000, 0.005, 34, 100],
     [100000, 0.01, 34, 100],
-    [100000, 0.05, 34, 100],
+    # [100000, 0.03, 34, 100],
 
     # # Iteration
     # [1000, 0.1, 34, 10],
     # [1000, 0.1, 34, 50],
     # [1000, 0.1, 34, 100],
     # [1000, 0.1, 34, 500],
-    # [1000, 0.1, 34, 1000],
+    # [1000, 0.1, 34, 1000],p
     # [1000, 0.1, 34, 5000],
 ]
+'''
+settings = [[12500, 0.0001*(2**(i)), 34, 100] for i in range(3, 20)]
 
 ### Util
 def log_metric(name, values, tags={}):
@@ -71,6 +74,7 @@ for MAT_SIZE, DENSITY, RANDSEED, ITER in settings:
     ###########################################
     #         Random matrix generation
     ###########################################
+    print(MAT_SIZE, DENSITY, RANDSEED, ITER)
     np.random.seed(RANDSEED)
     torch.random.manual_seed(RANDSEED)
 
