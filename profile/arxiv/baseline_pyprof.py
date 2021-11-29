@@ -34,17 +34,16 @@ from ogb.nodeproppred import Evaluator
 ### Pytorch profiler
 import torch.autograd.profiler as profiler
 import pyprof
+pyprof.init()
 
 ########################################
 ### Argparse
 ########################################
 parser = argparse.ArgumentParser()
-parser.add_argument('--platform', type=str)
+parser.add_argument('--platform', type=str, default='pyg')
 parser.add_argument('--dataset', type=str, default='obgn-arxiv')
 parser.add_argument('--hidden_channel', type=int, default=128)
 args = parser.parse_args()
-
-pyprof.init()
 
 ########################################
 ### Pytorch Geometric

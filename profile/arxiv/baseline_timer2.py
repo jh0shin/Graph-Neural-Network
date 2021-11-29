@@ -12,7 +12,7 @@ Custom GraphConv2 kernel modified to profiling detail forward info
 # CPU -> cuda memory copy line of graph and Net
 
 ### Constants
-_EPOCH = 100
+_EPOCH = 1
 
 ########################################
 ### Library
@@ -101,6 +101,12 @@ if args.platform == 'pyg':
     data.adj_t = data.adj_t.to_symmetric()
     data = data.to(device)
 
+    print(type(data.adj_t))
+    print(data.adj_t)
+
+    print(data.x)
+    print(data.x.size())
+
     model.train()
     for _ in range(_EPOCH):      
         optimizer.zero_grad()
@@ -141,7 +147,11 @@ if args.platform == 'dgl':
     data = data.to(device)
     label = label.to(device)
     features = data.ndata['feat']
+    # tmp = torch.argmax(features, dim=1).to('cuda')
+    # print(tmp)
+    # print(label)
     # print(len(features), data.number_of_nodes(), len(features[0]))
+    print(dataset.num_classes)
 
     model = DglSequential(
         GraphConv2(len(features[0]), args.hidden_channel, timer, activation=F.relu),
@@ -163,8 +173,8 @@ if args.platform == 'dgl':
     model.eval()
     with torch.no_grad():
         logits = model(data, features)
-        _, indices = torch.max(logits[train_idx], dim=1)
-        correct = torch.sum(indices == label.squeeze(1)[train_idx])
+        _, indices = torch.max(logits[test_idx], dim=1)
+        correct = torch.sum(indices == label.squeeze(1)[test_idx])
     print('Accuracy: {:.4f}'.format(correct.item() * 1.0 / len(indices)))
 
     print(timer.summary())

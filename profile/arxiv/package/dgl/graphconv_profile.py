@@ -389,38 +389,38 @@ class GraphConv(nn.Module):
             if not self._allow_zero_in_degree:
                 if (graph.in_degrees() == 0).any():
                     raise DGLError('There are 0-in-degree nodes in the graph, '
-                                   'output for those nodes will be invalid. '
-                                   'This is harmful for some applications, '
-                                   'causing silent performance regression. '
-                                   'Adding self-loop on the input graph by '
-                                   'calling `g = dgl.add_self_loop(g)` will resolve '
-                                   'the issue. Setting ``allow_zero_in_degree`` '
-                                   'to be `True` when constructing this module will '
-                                   'suppress the check and let the code run.')
+                                'output for those nodes will be invalid. '
+                                'This is harmful for some applications, '
+                                'causing silent performance regression. '
+                                'Adding self-loop on the input graph by '
+                                'calling `g = dgl.add_self_loop(g)` will resolve '
+                                'the issue. Setting ``allow_zero_in_degree`` '
+                                'to be `True` when constructing this module will '
+                                'suppress the check and let the code run.')
             
             with self._timer("fn.copy_src"): aggregate_fn = fn.copy_src('h', 'm')
             if edge_weight is not None:
                 assert edge_weight.shape[0] == graph.number_of_edges()
-                graph.edata['_edge_weight'] = edge_weight
+                with self._timer("etc"): graph.edata['_edge_weight'] = edge_weight
                 with self._timer("fn.u_mul_e"): aggregate_fn = fn.u_mul_e('h', '_edge_weight', 'm')
 
             # (BarclayII) For RGCN on heterogeneous graphs we need to support GCN on bipartite.
-            feat_src, feat_dst = expand_as_pair(feat, graph)
+            with self._timer("expand_as_pair"): feat_src, feat_dst = expand_as_pair(feat, graph)
             if self._norm in ['left', 'both']:
-                degs = graph.out_degrees().float().clamp(min=1)
+                with self._timer("degree"): degs = graph.out_degrees().float().clamp(min=1)
                 if self._norm == 'both':
                     with self._timer("th.pow"): norm = th.pow(degs, -0.5)
                 else:
-                    norm = 1.0 / degs
-                shp = norm.shape + (1,) * (feat_src.dim() - 1)
+                    with self._timer("etc"): norm = 1.0 / degs
+                with self._timer("shape"): shp = norm.shape + (1,) * (feat_src.dim() - 1)
                 with self._timer("th.reshape"): norm = th.reshape(norm, shp)
                 with self._timer("mul"): feat_src = feat_src * norm
 
             if weight is not None:
                 if self.weight is not None:
                     raise DGLError('External weight is provided while at the same time the'
-                                   ' module has defined its own weight parameter. Please'
-                                   ' create the module with flag weight=False.')
+                                ' module has defined its own weight parameter. Please'
+                                ' create the module with flag weight=False.')
             else:
                 weight = self.weight
 
@@ -428,24 +428,24 @@ class GraphConv(nn.Module):
                 # mult W first to reduce the feature size for aggregation.
                 if weight is not None:
                     with self._timer("th.matmul"): feat_src = th.matmul(feat_src, weight)
-                graph.srcdata['h'] = feat_src
+                with self._timer("etc"): graph.srcdata['h'] = feat_src
                 with self._timer("update_all; fn.sum"): graph.update_all(aggregate_fn, fn.sum(msg='m', out='h'))
-                rst = graph.dstdata['h']
+                with self._timer("etc"): rst = graph.dstdata['h']
             else:
                 # aggregate first then mult W
-                graph.srcdata['h'] = feat_src
+                with self._timer("etc"): graph.srcdata['h'] = feat_src
                 with self._timer("update_all; fn.sum"): graph.update_all(aggregate_fn, fn.sum(msg='m', out='h'))
-                rst = graph.dstdata['h']
+                with self._timer("etc"): rst = graph.dstdata['h']
                 if weight is not None:
                     with self._timer("th.matmul"): rst = th.matmul(rst, weight)
 
             if self._norm in ['right', 'both']:
-                degs = graph.in_degrees().float().clamp(min=1)
+                with self._timer("degree"): degs = graph.in_degrees().float().clamp(min=1)
                 if self._norm == 'both':
                     with self._timer("th.pow"): norm = th.pow(degs, -0.5)
                 else:
-                    norm = 1.0 / degs
-                shp = norm.shape + (1,) * (feat_dst.dim() - 1)
+                    with self._timer("etc"): norm = 1.0 / degs
+                with self._timer("shape"): shp = norm.shape + (1,) * (feat_dst.dim() - 1)
                 with self._timer("th.reshape"): norm = th.reshape(norm, shp)
                 with self._timer("mul"): rst = rst * norm
 
